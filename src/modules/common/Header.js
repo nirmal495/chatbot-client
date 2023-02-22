@@ -1,5 +1,5 @@
-import BotIcon from './Icons/BotIcon';
-import LeftArrow from './Icons/LeftArrow';
+import BotIcon from '../../Icons/BotIcon';
+import LeftArrow from '../../Icons/LeftArrow';
 
 const Header = (props) => {
     return (

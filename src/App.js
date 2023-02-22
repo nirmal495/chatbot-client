@@ -1,5 +1,5 @@
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './modules/common/Footer';
+import Header from './modules/common/Header';
 
 import './App.css';
 import Chat from './Icons/Chat';
