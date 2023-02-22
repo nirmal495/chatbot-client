@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import Content from './Content';
+import Footer from './Footer';
+import Header from './Header';
+import Input from './Input';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const messages = [
+    {
+        type: 'bot',
+        text: 'How can I help you?',
+        from: 'kAIron',
+        timeStamp: Date.now(),
+    },
+    {
+        type: 'user',
+        text: 'Which is fastest land animal?',
+        from: 'You',
+        timeStamp: Date.now(),
+    },
+    {
+        type: 'bot',
+        text: 'Cheetah is the fastest land animal.',
+        from: 'kAIron',
+        timeStamp: Date.now(),
+    },
+];
+
+const App = () => {
+    return (
+        <div className="botContainer">
+            <Header />
+            <Content messages={messages} />
+            <Input />
+            <Footer />
+        </div>
+    );
+};
 
 export default App;
