@@ -1,37 +1,64 @@
-import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
-import Input from './Input';
 
 import './App.css';
+import Chat from './Icons/Chat';
+import Help from './Icons/Help';
+import React from 'react';
+import ChatContainer from './modules/chat/ChatContainer';
+import HelpRenderer from './modules/help/HelpRenderer';
+import Tab from './modules/tabs/Tab';
+import TabContent from './modules/tabs/TabContent';
 
-const messages = [
+const tabs = [
     {
-        type: 'bot',
-        text: 'How can I help you?',
-        from: 'kAIron',
-        timeStamp: Date.now(),
+        id: 'chat',
+        label: 'Chat',
+        icon: <Chat />,
+        renderer: <ChatContainer />,
+        showTabs: false,
     },
     {
-        type: 'user',
-        text: 'Which is fastest land animal?',
-        from: 'You',
-        timeStamp: Date.now(),
-    },
-    {
-        type: 'bot',
-        text: 'Cheetah is the fastest land animal.',
-        from: 'kAIron',
-        timeStamp: Date.now(),
+        id: 'help',
+        label: 'Help',
+        icon: <Help />,
+        renderer: <HelpRenderer />,
+        showTabs: true,
     },
 ];
 
 const App = () => {
+    const [selectedTabData, setSelectedTab] = React.useState(tabs[1]);
+
+    const [prevTabData, setPrevTabData] = React.useState({});
+
+    const renderPreviousTab = () => {
+        if (Object.keys(prevTabData).length) {
+            setSelectedTab(prevTabData);
+        }
+    };
+
+    const renderNextTab = (data) => {
+        setPrevTabData(selectedTabData);
+        setSelectedTab(data);
+    };
+
     return (
         <div className="botContainer">
-            <Header />
-            <Content messages={messages} />
-            <Input />
+            <Header selectedTabData={selectedTabData} renderPreviousTab={renderPreviousTab} />
+            <TabContent selectedTabData={selectedTabData} />
+            {selectedTabData.showTabs && (
+                <div className="tabsContainer">
+                    {tabs.map((tabData, index) => (
+                        <Tab
+                            key={index}
+                            data={tabData}
+                            selectedTabData={selectedTabData}
+                            setSelectedTab={renderNextTab}
+                        />
+                    ))}
+                </div>
+            )}
             <Footer />
         </div>
     );

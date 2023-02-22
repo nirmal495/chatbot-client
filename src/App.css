@@ -1,126 +1,249 @@
 * {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .botContainer {
-  position: absolute;
-  width: 400px;
-  height: 600px;
-  right: 40px;
-  bottom: 60px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    right: 40px;
+    bottom: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  height: 80px;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px 10px 0px 0px;
-  background-color: wheat;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #fc5c9c;
 }
 
 .backButton {
-  padding: 10px;
+    padding: 10px;
 }
 
 .backButton svg {
-  font-size: 24px;
-  transition: .2s linear;
+    font-size: 24px;
+    transition: 0.2s linear;
 }
 
 .backButton:hover {
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
 }
 
 .backButton:hover svg {
-  opacity: 1;
-  transition: .2s linear;
-  transform: scale(1.2);
+    opacity: 1;
+    transition: 0.2s linear;
+    transform: scale(1.2);
 }
 
 .backButton:hover svg path {
-  fill: rebeccapurple;
+    fill: #e41749;
 }
 
 .iconContainer {
-  padding: 10px;
-  background: white;
-  border-radius: 50%;
+    padding: 10px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    margin: 0px 16px 0px 8px;
 }
 
 .iconContainer svg {
-  font-size: 24px;
-  transition: .2s linear;
+    font-size: 28px;
+    transition: 0.2s linear;
+}
+
+.botName {
+    font-weight: 600;
+}
+
+.tabContentContainer {
+    height: calc(100% - 180px);
+}
+
+.tabContentContainer.extraHeight {
+    height: calc(100% - 100px);
+}
+
+.tabsContainer {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tabsContainer .tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.tabsContainer .tab.active {
+    background-color: #fc5c9c;
+    cursor: auto;
+}
+
+.tabsContainer .tab:hover .tabIcon {
+    transform: scale(1.2);
+}
+
+.tabsContainer .tab .tabLabel {
+    font-size: 12px;
+}
+
+.tabsContainer .tab .tabIcon {
+    font-size: 18px;
+}
+
+.tabsContainer .tab .tabIcon:hover {
+    transform: scale(1.2);
 }
 
 .contentDiv {
-  height: calc(100% - 160px);
-  padding: 10px 20px;
+    height: calc(100% - 60px);
+    padding: 10px 20px;
+    background-color: #fccde2;
+    overflow: auto;
 }
 
 .inputContainer {
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  padding: 0px 10px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 10px;
+    background-color: white;
 }
 
 .inputContainer .userMessageInput {
-  width: 100%;
-  height: 60px;
-  padding: 10px;
-  border-radius: 0px;
-  outline: none;
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  border: 0px;
-  font-size: 16px;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-radius: 0px;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 0px;
+    font-size: 16px;
 }
 
 .inputContainer button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  background-color: transparent;
-  position: relative;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
 }
 
 .inputContainer button svg {
-  font-size: 20px;
-  transition: .2s linear;
+    font-size: 20px;
+    transition: 0.2s linear;
 }
 
 .inputContainer button:hover svg {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .inputContainer button:hover path {
-  fill: rebeccapurple;
+    fill: #e41749;
 }
 
 .footer {
-  height: 10px;
-  text-align: center;
-  font-size: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 20px;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.botMsgContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.botMsgContainer .botMsgDetails {
+    display: flex;
+    flex-direction: row;
+    opacity: 0.6;
+    font-size: 10px;
+    margin: 0px 2px;
+}
+
+.botMsgContainer .botMsgDetails .botMsgIcon {
+    margin-right: 8px;
+}
+
+.botMsgContainer .botMsgText {
+    padding: 8px 12px;
+    margin: 0px;
+    width: fit-content;
+    max-width: 80%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.userMsgContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.userMsgContainer .userMsgDetails {
+    display: flex;
+    flex-direction: row;
+    opacity: 0.6;
+    font-size: 10px;
+    margin: 0px 2px;
+}
+
+.userMsgContainer .userMsgDetails .userMsgIcon {
+    margin-right: 8px;
+}
+
+.userMsgContainer .userMsgText {
+    padding: 8px 12px;
+    margin: 0px;
+    width: fit-content;
+    max-width: 80%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 12px;
 }
