@@ -1,7 +1,6 @@
 const Tab = (props) => {
     const handleTabClick = () => {
         props.setSelectedTab(props.data);
-        props.setRenderer(props.data.renderer);
     };
 
     return (

@@ -9,28 +9,46 @@ import ChatContainer from './modules/chat/ChatContainer';
 import HelpRenderer from './modules/help/HelpRenderer';
 import Tab from './modules/tabs/Tab';
 import TabContent from './modules/tabs/TabContent';
-
-const tabs = [
-    {
-        id: 'chat',
-        label: 'Chat',
-        icon: <Chat />,
-        renderer: <ChatContainer />,
-        showTabs: false,
-    },
-    {
-        id: 'help',
-        label: 'Help',
-        icon: <Help />,
-        renderer: <HelpRenderer />,
-        showTabs: true,
-    },
-];
+import Code from './Icons/Code';
+import CodeRenderer from './modules/code/CodeRenderer';
 
 const App = () => {
-    const [selectedTabData, setSelectedTab] = React.useState(tabs[1]);
-
     const [prevTabData, setPrevTabData] = React.useState({});
+
+    const [displayHeaderButtons, setDisplayHeaderButtons] = React.useState(false);
+
+    const [isExpanded, setIsExpanded] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isExpanded) {
+        }
+    }, [isExpanded]);
+
+    const tabs = [
+        {
+            id: 'chat',
+            label: 'Chat',
+            icon: <Chat />,
+            renderer: <ChatContainer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            showTabs: false,
+        },
+        {
+            id: 'help',
+            label: 'Help',
+            icon: <Help />,
+            renderer: <HelpRenderer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            showTabs: true,
+        },
+        {
+            id: 'code',
+            label: 'Code',
+            icon: <Code />,
+            renderer: <CodeRenderer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            showTabs: false,
+        },
+    ];
+
+    const [selectedTabData, setSelectedTab] = React.useState(tabs[1]);
 
     const renderPreviousTab = () => {
         if (Object.keys(prevTabData).length) {
@@ -44,9 +62,18 @@ const App = () => {
     };
 
     return (
-        <div className="botContainer">
-            <Header selectedTabData={selectedTabData} renderPreviousTab={renderPreviousTab} />
-            <TabContent selectedTabData={selectedTabData} />
+        <div className={'botContainer ' + (isExpanded ? 'expanded' : '')}>
+            <Header
+                selectedTabData={selectedTabData}
+                renderPreviousTab={renderPreviousTab}
+                displayHeaderButtons={displayHeaderButtons}
+                isExpanded={isExpanded}
+                setIsExpanded={setIsExpanded}
+            />
+            <TabContent
+                selectedTabData={selectedTabData}
+                setDisplayHeaderButtons={setDisplayHeaderButtons}
+            />
             {selectedTabData.showTabs && (
                 <div className="tabsContainer">
                     {tabs.map((tabData, index) => (
