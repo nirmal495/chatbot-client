@@ -11,6 +11,7 @@ import Tab from './modules/tabs/Tab';
 import TabContent from './modules/tabs/TabContent';
 import Code from './Icons/Code';
 import CodeRenderer from './modules/code/CodeRenderer';
+import Nav from './modules/common/Nav';
 
 const App = () => {
     const [prevTabData, setPrevTabData] = React.useState({});
@@ -60,28 +61,31 @@ const App = () => {
     };
 
     return (
-        <div className={'botContainer ' + (isExpanded ? 'expanded' : '')}>
-            <Header
-                selectedTabData={selectedTabData}
-                renderPreviousTab={renderPreviousTab}
-                isExpanded={isExpanded}
-                setIsExpanded={setIsExpanded}
-            />
-            <TabContent selectedTabData={selectedTabData} />
-            {selectedTabData.showTabs && (
-                <div className="tabsContainer">
-                    {tabs.map((tabData, index) => (
-                        <Tab
-                            key={index}
-                            data={tabData}
-                            selectedTabData={selectedTabData}
-                            setSelectedTab={renderNextTab}
-                        />
-                    ))}
-                </div>
-            )}
-            <Footer />
-        </div>
+        <>
+            <Nav />
+            <div className={'botContainer ' + (isExpanded ? 'expanded' : '')}>
+                <Header
+                    selectedTabData={selectedTabData}
+                    renderPreviousTab={renderPreviousTab}
+                    isExpanded={isExpanded}
+                    setIsExpanded={setIsExpanded}
+                />
+                <TabContent selectedTabData={selectedTabData} />
+                {selectedTabData.showTabs && (
+                    <div className="tabsContainer">
+                        {tabs.map((tabData, index) => (
+                            <Tab
+                                key={index}
+                                data={tabData}
+                                selectedTabData={selectedTabData}
+                                setSelectedTab={renderNextTab}
+                            />
+                        ))}
+                    </div>
+                )}
+                <Footer />
+            </div>
+        </>
     );
 };
 
