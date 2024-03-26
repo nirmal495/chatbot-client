@@ -15,8 +15,6 @@ import CodeRenderer from './modules/code/CodeRenderer';
 const App = () => {
     const [prevTabData, setPrevTabData] = React.useState({});
 
-    const [displayHeaderButtons, setDisplayHeaderButtons] = React.useState(false);
-
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     React.useEffect(() => {
@@ -29,21 +27,21 @@ const App = () => {
             id: 'chat',
             label: 'Chat',
             icon: <Chat />,
-            renderer: <ChatContainer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            renderer: <ChatContainer />,
             showTabs: false,
         },
         {
             id: 'help',
             label: 'Help',
             icon: <Help />,
-            renderer: <HelpRenderer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            renderer: <HelpRenderer />,
             showTabs: true,
         },
         {
             id: 'code',
             label: 'Code',
             icon: <Code />,
-            renderer: <CodeRenderer setDisplayHeaderButtons={setDisplayHeaderButtons} />,
+            renderer: <CodeRenderer />,
             showTabs: false,
         },
     ];
@@ -66,14 +64,10 @@ const App = () => {
             <Header
                 selectedTabData={selectedTabData}
                 renderPreviousTab={renderPreviousTab}
-                displayHeaderButtons={displayHeaderButtons}
                 isExpanded={isExpanded}
                 setIsExpanded={setIsExpanded}
             />
-            <TabContent
-                selectedTabData={selectedTabData}
-                setDisplayHeaderButtons={setDisplayHeaderButtons}
-            />
+            <TabContent selectedTabData={selectedTabData} />
             {selectedTabData.showTabs && (
                 <div className="tabsContainer">
                     {tabs.map((tabData, index) => (

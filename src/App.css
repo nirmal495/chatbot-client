@@ -447,3 +447,10 @@
     word-wrap: break-word;
     white-space: break-spaces;
 }
+
+.codeRenderer {
+    height: 100%;
+    overflow: auto;
+    background: var(--layout-bg-color2);
+    padding: 20px;
+}

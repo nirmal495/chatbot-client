@@ -17,10 +17,9 @@ const Header = (props) => {
             <div className="iconContainer">
                 <BotIcon />
             </div>
-            <div className="botName">Chat bot Name</div>
+            <div className="botName">kAIron</div>
             <div className="clientActionBtn" onClick={toggleClient}>
-                {props.displayHeaderButtons &&
-                    (props.isExpanded ? <CollapseIcon /> : <ExpandIcon />)}
+                {props.isExpanded ? <CollapseIcon /> : <ExpandIcon />}
             </div>
         </header>
     );
