@@ -6,6 +6,7 @@ import Profile from './modules/profile/Prorfile';
 import BlogHome from './modules/blogHome/BlogHome';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import NudgeEditor from './modules/nudgeEditor/NudgeEditor';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     {
         path: '/blog',
         element: <BlogHome />,
+    },
+    {
+        path: '/editor',
+        element: <NudgeEditor />,
     },
 ]);
 

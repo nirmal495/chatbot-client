@@ -14,6 +14,9 @@ const Nav = (props) => {
                 <Link to="/blog" className="nav-link">
                     Blog
                 </Link>
+                <Link to="/editor" className="nav-link">
+                    Editor
+                </Link>
             </div>
         </div>
     );
